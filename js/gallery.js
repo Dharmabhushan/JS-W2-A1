@@ -1,33 +1,54 @@
-
+// Update the large image when mouse is over or focus is on an image
 function upDate(previewPic) {
-
-    // Debugging to check if the event is triggered and print out the alt and source
-    console.log("Mouse over triggered!");
+    console.log("Mouse over or focus triggered!");
     console.log("Alt text: " + previewPic.alt);
     console.log("Source: " + previewPic.src);
 
-
-    // 1. Change the URL for the background image of the div with id="image"
+    // Change the background image for the div with id="image"
     document.getElementById('image').style.backgroundImage = 'url(' + previewPic.src + ')';
-    
-    // 2. Change the text of the div with the id="image" to the alt text of the preview image
+    // Change the text of the div with id="image" to the alt text of the preview image
     document.getElementById('image').innerHTML = previewPic.alt; 
 
+    // Update the background image properties
+    let imageDiv = document.getElementById('image');
+    imageDiv.style.backgroundSize = 'contain';
+    imageDiv.style.backgroundPosition = 'center';
+    imageDiv.style.backgroundRepeat = 'no-repeat';
 }
 
-// Function to reset the image and text in the div with id="image"
+// Reset the image and text when mouse is out or focus is removed
 function unDo() {
+    console.log("Mouse out or blur triggered!");
 
-     // Debugging to check if the event is triggered
-     console.log("Mouse out triggered!");
+    // Reset the background image
+    document.getElementById('image').style.backgroundImage = 'url("images/bgcolor.png")'; // Original image
+    // Reset the text to the original text
+    document.getElementById('image').innerHTML = 'Hover over an image below to display here.'; 
+
+    // Reset background image when mouse leaves or focus is lost
+    let imageDiv = document.getElementById('image');
+    imageDiv.style.backgroundImage = 'url("images/bgcolor.png")';
+}
 
 
-    // 1. Reset the URL for the background image of the div with id="image" to the original image
-    //document.getElementById('image').style.backgroundImage = "url('')";
-    document.getElementById('image').style.backgroundImage = 'url(" ")'; // Original image
-    
-    // 2. Reset the text of the div with the id="image" back to the original text 
-    document.getElementById('image').innerHTML = 'Hover over an image below to display here.'; // Original text
+
+function addTabFocus() {
+    let images = document.querySelectorAll('.preview');
+    for (let i = 0; i < images.length; i++) {
+        images[i].setAttribute('tabindex', '0');
+        images[i].addEventListener('focus', function () {
+            upDate(images[i]);
+            images[i].style.opacity = 1;  // Fully visible when in focus
+        });
+        images[i].addEventListener('blur', function () {
+            unDo();
+            images[i].style.opacity = 0.6;  // Reduced opacity when blurred
+        });
+    }
+}
+ 
 
 
-} 
+window.onload = function() {
+    addTabFocus();
+};

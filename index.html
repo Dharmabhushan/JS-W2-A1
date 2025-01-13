@@ -7,12 +7,19 @@
     <script src="js/gallery.js" defer></script>
 </head>
 <body>
+    <!-- Div for displaying the hovered image -->
     <div id="image">
         Hover over an image below to display here.
     </div>
     
-    <img class="preview" alt="Styling with a Bandana" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon.jpg" onmouseover="upDate(this)" onmouseout="unDo()">
-    <img class="preview" alt="With My Boy" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon2.JPG" onmouseover="upDate(this)" onmouseout="unDo()">
-    <img class="preview" alt="Young Puppy" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/389177/bacon3.jpg" onmouseover="upDate(this)" onmouseout="unDo()">
+    <!-- Preview images to hover on -->
+    <div class="preview-container">
+        <img class="preview" alt="Attitude of my daughter..." src="images/Attitude.jpg" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" alt="Playing with my daughter..." src="images/Daughter1.jpg" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" alt="Thinking......" src="images/daughter2.jpg" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" alt="Flower show in bangalore..." src="images/flowers.jpg" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" alt="Restaurant Sweets......" src="images/Food-1.jpg" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+        <img class="preview" alt="Homely Sweets......" src="images/Sweets.jpg" onmouseover="upDate(this)" onmouseout="unDo()" onfocus="upDate(this)" onblur="unDo()">
+    </div>
 </body>
 </html>
